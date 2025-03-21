@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polo - Gestion des patients</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/components.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center md:w-64 bg-white h-full">
+                <img src="/src/assets/images/polo.png" alt="Polo" class="h-auto w-24 p-4">
+            </div>
+            <div class="flex items-center gap-2 p-4">
+                <div class="flex items-center gap-2">
+                    <div class="flex flex-col items-end text-right -space-y-1">
+                        <span class="text-gray-700 hidden md:inline font-nunito text-sm font-extrabold leading-none">Lola</span>
+                        <span class="text-gray-700 hidden md:inline font-nunito text-sm font-extrabold leading-tight">Dufour</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
+                        <img src="/src/assets/images/Lola.png" alt="Profile" class="w-8 h-8 rounded-full"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzRkMzk5IiBzdHJva2Utd2lkdGg9IjIiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI5IiByPSIzIi8+PHBhdGggZD0iTTYgMjAgQzYgMTcgOCAxNSAxMiAxNSBDMTYgMTUgMTggMTcgMTggMjAiLz48L3N2Zz4='">
+                    </div>
+                </div>
+                <!-- Icône flèche vers le bas (visible uniquement en desktop) -->
+                <svg class="hidden md:block w-6 h-6 text-[#3CE0A0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar/Navigation -->
+    <nav class="fixed bottom-0 left-0 w-full bg-[#3CE0A0] md:w-64 md:h-[calc(100vh-4rem)] md:top-16 z-40">
+        <!-- Navigation Links for Desktop -->
+        <ul class="hidden md:flex md:flex-col md:h-full md:py-4 relative">
+            <div class="space-y-5 mt-12 pl-0">
+                <li><a href="#" class="text-white hover:text-emerald-100 font-extrabold px-8">Accueil</a></li>
+                <li><a href="#" class="text-white hover:text-emerald-100 font-extrabold px-8">Mes ordonnances</a></li>
+                <li>
+                    <div class="relative">
+                        <div class="absolute left-0 top-0 h-full w-1 bg-white"></div>
+                        <button class="dropdown-toggle flex items-center justify-between w-full text-gray-900 font-extrabold py-2 pl-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                                <span>Mes patients</span>
+                                <svg class="dropdown-arrow w-4 h-4 ml-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu hidden bg-[#3CE0A0] ml-8 mt-1 space-y-1 overflow-hidden transition-all duration-200">
+                            <li><a href="#" class="text-white font-extrabold text-xs hover:text-emerald-100 block py-1 pl-2">Tous les patients</a></li>
+                            <li><a href="#" class="text-white font-extrabold text-xs hover:text-emerald-100 block py-1 pl-2">Patients en attente</a></li>
+                            <li><a href="#" class="text-white font-extrabold text-xs hover:text-emerald-100 block py-1 pl-2">Patients archivés</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="text-white font-extrabold hover:text-emerald-100 px-8">Mes pharmacies</a></li>
+                <li>
+                    <div class="relative">
+                        <button class="dropdown-toggle flex items-center justify-between w-full text-white font-extrabold hover:text-emerald-100 py-1 px-8">
+                            <div class="flex items-center">
+                                <span>Mes documents</span>
+                                <svg class="dropdown-arrow w-4 h-4 ml-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu hidden bg-[#3CE0A0] ml-8 mt-1 space-y-1 overflow-hidden transition-all duration-200">
+                            <li><a href="#" class="text-white font-extrabold text-xs hover:text-emerald-100 block py-1 pl-2">Tous les documents</a></li>
+                            <li><a href="#" class="text-white font-extrabold text-xs hover:text-emerald-100 block py-1 pl-2">Documents par patient</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="text-white font-extrabold hover:text-emerald-100 px-8">Mes Pilbeez</a></li>
+                <li><a href="#" class="text-white font-extrabold hover:text-emerald-100 px-8">Parrainer un cabinet</a></li>
+            </div>
+            
+            <!-- Contact buttons -->
+            <li>
+                <div class="hidden md:flex bg-white rounded-tr-full rounded-br-full items-center space-x-6 px-3 py-2 absolute left-0 bottom-12 shadow-sm">
+                    <a href="tel:">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24">
+                            <path d="M20.1924 14.7072L17.6976 12.2239C17.1889 11.6935 16.5592 11.4041 15.881 11.4041C15.227 11.4041 14.5972 11.6935 14.0644 12.1998L12.8048 13.4535C12.7806 13.4294 12.7322 13.4053 12.708 13.4053L12.6595 13.3812C12.5626 13.333 12.49 13.3088 12.3931 13.2606C12.3446 13.2365 12.272 13.1883 12.2235 13.1642C10.9156 12.3444 9.72872 11.2836 8.56609 9.86108C8.05744 9.23421 7.71834 8.7279 7.47612 8.22158C7.76678 7.93226 8.08166 7.64294 8.37231 7.35362L8.75986 6.96785C9.29273 6.43743 9.58339 5.78645 9.58339 5.13548C9.58339 4.4845 9.29273 3.85764 8.75986 3.32721L7.52456 2.07348C7.40346 1.92882 7.25813 1.78416 7.13702 1.63949C6.87058 1.35017 6.55571 1.03674 6.28927 0.795637C5.7564 0.289323 5.12664 0 4.49688 0C3.86713 0 3.23737 0.265212 2.68027 0.771527L1.10588 2.33869C0.451902 2.98967 0.0885801 3.76119 0.0159157 4.67738C-0.0809701 6.02755 0.282352 7.25718 0.621452 8.19747C1.37232 10.2227 2.4865 12.1033 4.182 14.1045C6.21661 16.5155 8.63875 18.4202 11.4484 19.7704C12.4173 20.2526 13.919 20.8794 15.6387 21H15.9294C17.0678 21 18.0609 20.566 18.8118 19.7704L18.8602 19.7222C19.054 19.4811 19.2962 19.24 19.6111 18.9506C19.8291 18.7819 20.0228 18.589 20.2408 18.3479C21.2581 17.2629 21.2581 15.7681 20.1924 14.7072ZM5.87751 7.0884C5.48996 7.47417 5.36886 7.93226 5.51418 8.43858C5.51418 8.51091 5.56263 8.55913 5.58685 8.60735C5.92595 9.40299 6.38616 10.1745 7.08858 11.0425C8.37231 12.6096 9.72872 13.8393 11.2304 14.7796C11.3516 14.8519 11.4969 14.9242 11.618 14.9966C11.6907 15.0207 11.7391 15.0689 11.7875 15.093L11.836 15.1171C11.9329 15.1653 12.0055 15.1894 12.0782 15.2377C12.1509 15.2618 12.1993 15.31 12.2477 15.3341C12.272 15.3582 12.3204 15.3582 12.3446 15.3823C12.5384 15.4788 12.7322 15.527 12.9017 15.527C13.2408 15.527 13.5557 15.3823 13.8464 15.1171L15.4208 13.5499C15.5176 13.4535 15.7114 13.3088 15.8567 13.3088C16.0021 13.3088 16.1474 13.4294 16.2927 13.5499L18.8118 16.0574C19.0782 16.3226 19.054 16.5155 19.054 16.5637C19.0298 16.7325 18.9086 16.9013 18.7875 16.9977L18.7633 17.0459C18.6664 17.1665 18.5453 17.287 18.4242 17.4076C18.3758 17.4558 18.3273 17.504 18.2789 17.5522L18.1093 17.721C17.8671 17.9621 17.6249 18.2032 17.3827 18.4925C16.9951 18.9024 16.5592 19.0953 15.9294 19.0953H15.7356C14.3792 18.9747 13.1197 18.4443 12.2962 18.0586C9.75294 16.8289 7.52456 15.093 5.68373 12.899C4.182 11.0907 3.14048 9.40298 2.43806 7.5465C2.0263 6.50976 1.88097 5.64179 1.95363 4.87026C2.00207 4.43628 2.17162 4.07463 2.4865 3.73708L4.03668 2.19403C4.13356 2.09759 4.30311 1.95293 4.47266 1.95293C4.64221 1.95293 4.81176 2.07348 4.93287 2.19403C5.12664 2.3628 5.27197 2.53157 5.46574 2.70034C5.56263 2.79679 5.65951 2.89323 5.7564 2.98967L7.42768 4.65327C7.59723 4.82204 7.69411 4.99082 7.69411 5.11137C7.69411 5.23192 7.59723 5.40069 7.42768 5.56946L7.01591 5.97933C6.62837 6.3651 6.26505 6.72675 5.87751 7.0884Z" fill="#363636"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.8 2C2.33554 2 2 2.36615 2 2.75V13.25C2 13.6338 2.33554 14 2.8 14H17.2C17.6645 14 18 13.6338 18 13.25V2.75C18 2.36615 17.6645 2 17.2 2H2.8ZM0 2.75C0 1.20885 1.28446 0 2.8 0H17.2C18.7155 0 20 1.20885 20 2.75V13.25C20 14.7912 18.7155 16 17.2 16H2.8C1.28446 16 0 14.7912 0 13.25V2.75Z" fill="#363636"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.18962 1.3861C1.49479 0.950158 2.06023 0.871624 2.45258 1.21069L10 7.73315L17.5474 1.21069C17.9398 0.871624 18.5052 0.950158 18.8104 1.3861C19.1155 1.82205 19.0449 2.45032 18.6525 2.78939L10.5525 9.78935C10.2275 10.0702 9.77245 10.0702 9.44746 9.78935L1.34749 2.78939C0.955142 2.45032 0.884462 1.82205 1.18962 1.3861Z" fill="#363636"/>
+                        </svg>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        
+        <!-- Mobile Navigation with Hamburger Menu -->
+        <div class="md:hidden">
+            <!-- Mobile Navigation Links (Initially Hidden) -->
+            <ul id="mobile-nav-links" class="mobile-nav-links">
+                <li class="py-2"><a href="#" class="text-white hover:text-emerald-100 px-2">Accueil</a></li>
+                <li class="py-2"><a href="#" class="text-white hover:text-emerald-100 px-2">Mes ordonnances</a></li>
+                <li class="py-2">
+                    <button class="dropdown-toggle flex items-center justify-between w-full text-white hover:text-emerald-100 font-bold border-l-4 border-white pl-3 py-2">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span>Mes patients</span>
+                            <svg class="dropdown-arrow w-4 h-4 ml-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu hidden bg-[#3CE0A0] ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200">
+                        <li><a href="#" class="text-white hover:text-emerald-100 block py-1 pl-2">Tous les patients</a></li>
+                        <li><a href="#" class="text-white hover:text-emerald-100 block py-1 pl-2">Patients en attente</a></li>
+                        <li><a href="#" class="text-white hover:text-emerald-100 block py-1 pl-2">Patients archivés</a></li>
+                    </ul>
+                </li>
+                <li class="py-2"><a href="#" class="text-white hover:text-emerald-100 px-2">Mes pharmacies</a></li>
+                <li class="py-2">
+                    <button class="dropdown-toggle flex items-center justify-between w-full text-white hover:text-emerald-100 px-2">
+                        <div class="flex items-center">
+                            <span>Mes documents</span>
+                            <svg class="dropdown-arrow w-4 h-4 ml-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu hidden bg-[#3CE0A0] ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200">
+                        <li><a href="#" class="text-white hover:text-emerald-100 block py-1 pl-2">Tous les documents</a></li>
+                        <li><a href="#" class="text-white hover:text-emerald-100 block py-1 pl-2">Documents par patient</a></li>
+                    </ul>
+                </li>
+                <li class="py-2"><a href="#" class="text-white hover:text-emerald-100 px-2">Mes Pilbeez</a></li>
+                <li class="py-2"><a href="#" class="text-white hover:text-emerald-100 px-2">Parrainer un cabinet</a></li>
+            </ul>
+            
+            <!-- Mobile Navigation Bar with Hamburger -->
+            <div class="flex items-center h-16 relative shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
+                <!-- Container for hamburger and divider -->
+                <div class="flex items-center h-full">
+                    <!-- Hamburger Menu Button -->
+                    <button id="hamburger-btn" class="text-white px-4 py-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Ligne blanche verticale -->
+                    <div class="h-full w-px bg-white"></div>
+                </div>
+                
+                <!-- Points display at the right -->
+                <div class="points-display">
+                    <div class="points-container">
+                        <span class="text-3xl text-white font-black">1740</span>
+                        <span class="text-sm font-black">points</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-20 md:ml-64 md:p-0 md:pt-16">
+        <!-- Page Title and Action Buttons Layout with Gradient Background -->
+        <div class="header-gradient p-12 md:p-12 md:pt-16 mb-8 md:mb-8 md:rounded-none">
+            <!-- Title -->
+            <h1 class="text-3xl font-black text-gray-800 mb-12 text-center">Les patients du cabinet</h1>
+            
+            <!-- Action Buttons - Stacked on mobile, flex-row on desktop -->
+            <div class="flex flex-col md:flex-row md:flex-wrap justify-center gap-6 mb-12 md:mb-16">
+                <button class="flex items-center justify-center space-x-2 bg-[#3CE0A0] text-white font-black px-4 py-3 rounded-full hover:bg-emerald-500 w-full md:max-w-[200px]">
+                    <img src="/src/assets/images/newPatient.png" alt="Ajouter" class="w-9 h-9">
+                    <span>Ajouter un patient</span>
+                </button>
+                <button class="flex items-center justify-center space-x-2 bg-[#3CE0A0] text-white font-black px-4 py-3 rounded-full hover:bg-emerald-500 w-full md:max-w-[200px]">
+                    <img src="/src/assets/images/time.png" alt="Attente" class="w-9 h-9">
+                    <span>Patients en attente</span>
+                </button>
+                <button class="flex items-center justify-center space-x-2 border-2 border-[#3CE0A0] text-[#3CE0A0] font-black px-4 py-3 rounded-full hover:bg-emerald-50 w-full md:max-w-[170px]">
+                    <img src="/src/assets/images/archive.png" alt="Archive" class="w-9 h-9">
+                    <span>Patients archivés</span>
+                </button>
+                <button class="flex items-center justify-center space-x-2 border-2 border-[#3CE0A0] text-[#3CE0A0] font-black px-4 py-3 rounded-full hover:bg-emerald-50 w-full md:max-w-[170px]">
+                    <img src="/src/assets/images/heart.png" alt="Cœur" class="w-9 h-9">
+                    <span>Voir les aidants</span>
+                </button>
+            </div>
+        </div>
+            
+        <!-- Contenu principal avec padding approprié -->
+        <div class="p-4 md:p-8">
+            <!-- Search Section - Max width to center it on larger screens -->
+            <div class="max-w-3xl mx-auto mb-8">
+                <div class="flex flex-col items-center md:flex-row md:justify-center">
+                    <!-- Image de loupe décorative (visible uniquement sur desktop) -->
+                    <div class="hidden md:block md:w-1/6 md:pr-0">
+                        <img src="/src/assets/images/loupe.png" alt="Recherche" class="w-full max-w-[200px]">
+                    </div>
+                    <!-- Contenu de recherche -->
+                    <div class="w-full md:w-2/3 max-w-md mx-auto">
+                        <h2 class="text-3xl text-[#3CE0A0] font-black mb-2 text-center">Recherchez un patient</h2>
+                        <p class="text-gray-500 mb-4 font-light text-sm text-center">Entrez les premières lettres du nom du patient <br> que vous recherchez</p>
+                        <div class="relative mx-auto max-w-xs">
+                            <input type="text" 
+                                placeholder="Rechercher..." 
+                                class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 text-center rounded-full focus:border-[#3CE0A0] focus:outline-none">
+                        </div>
+                    </div>
+                    <!-- Élément invisible pour équilibrer la mise en page -->
+                    <div class="hidden md:block md:w-1/6"></div>
+                </div>
+            </div>
+
+            <!-- Ligne séparatrice -->
+            <div class="max-w-5xl mx-auto my-8">
+                <hr class="border-t border-gray-200">
+            </div>
+
+            <!-- Patients Grid - Max width container for better layout -->
+            <div class="max-w-4xl mx-auto mt-24">
+                <div id="patients-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-16">
+                    <!-- Le contenu de la grille sera généré dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="/src/js/main.js"></script>
+</body>
+</html> 
